@@ -1,47 +1,93 @@
-import java.util.Iterator;
+import java.util.ListIterator;
 
+// Example usage
 public class CircularLinkedListDemo {
-    static final int NUM_CYCLES = 3;
     public static void main(String[] args) {
         CircularLinkedList<String> circularList = new CircularLinkedList<>();
-        Iterator<String> iterator = circularList.iterator();
-        circularList.add("Apple");
-        circularList.add("Banana");
-        circularList.add("Cherry");
-        circularList.add("Durian");
-        //circularList.remove("Apple");
+        circularList.add("A");
+        circularList.add("B");
+        circularList.add("C");
 
-        //circularList.printList();
-
-        System.out.println("Element at index 5: " + circularList.get(5));
-        System.out.println("Element at index -2: " + circularList.get(-2));
-        System.out.println("Element at index 1: " + circularList.get(1));
-        System.out.println("Element at index 0: " + circularList.get(0));
-        System.out.println("Element at index 4: " + circularList.get(4));
-        System.out.println("Element at index -16: " + circularList.get(-16));
-        System.out.println("\nTraversing the circular linked list in a circular manner:");
-        int numCycles= 0;
-        int current = 0;
-        for (String element : circularList) {
-            System.out.println(element);
-            current++;
-            if (current % circularList.size() == 0 ) {
-                current = 0;
-                numCycles ++;
-                if (numCycles >= NUM_CYCLES)
-                    break;
-                System.out.println();
+        ListIterator<String> iterator = circularList.iterator();
+        System.out.println("Forward iteration:");
+        for (int i = 0; i < 9; i++) {
+            if (iterator.hasNext()) {
+                System.out.print(iterator.next() + " ");
             }
         }
-        int x = 1;
-        while (iterator.hasNext()) {
-            String element = iterator.next();
-            System.out.println(element);
-            if (x++ >=16)
-                 break;
+
+        System.out.println("\nBackward iteration:");
+        for (int i = 0; i < 9; i++) {
+            if (iterator.hasPrevious()) {
+                System.out.print(((CircularIterator<String>) iterator).previous() + " ");
+            }
         }
 
+        CircularLinkedList<Integer> circularListInt = new CircularLinkedList<>();
+        circularListInt.add(1);
+        circularListInt.add(2);
+        circularListInt.add(3);
 
-        // System.out.println(circularList.next());
+        ListIterator<Integer> iterator2 = circularListInt.iterator();
+
+
+        System.out.println();
+        System.out.println("Forward iteration:");
+        for (int i = 0; i < 9; i++) {
+            if (iterator2.hasNext()) {
+                System.out.print(iterator2.next() + " ");
+            }
+        }
+
+        System.out.println("\nBackward iteration:");
+        for (int i = 0; i < 9; i++) {
+            if (iterator2.hasPrevious()) {
+                System.out.print( iterator2.previous() + " ");
+            }
+        }
+        System.out.println();
+
+        CircularLinkedList<String> fruits = new CircularLinkedList<>();
+
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        fruits.add("Durian");
+
+        ListIterator<String> fruitIterator = fruits.iterator();
+
+        int loops = 1;
+        System.out.println("\nForward iteration:");
+        while (fruitIterator.hasNext()) {
+            String element = fruitIterator.next();
+            System.out.println(element);
+            if (loops++ >=8)
+                break;
+        }
+        System.out.println();
+        System.out.println("Element at index 5: " + fruits.get(5));
+        System.out.println("Element at index -2: " + fruits.get(-2));
+        System.out.println("Element at index 1: " + fruits.get(1));
+        System.out.println("Element at index 0: " + fruits.get(0));
+        System.out.println("Element at index 4: " + fruits.get(4));
+        System.out.println("Element at index -16: " + fruits.get(-16));
+
+
+        System.out.println("\nBackward iteration:");
+        fruitIterator = fruits.iterator();
+        for (int i = 0; i < 4; i++) {
+            if (fruitIterator.hasPrevious()) {
+                System.out.println(((CircularIterator<String>)fruitIterator).previous() + " ");
+            }
+        }
+        loops = 0;
+        System.out.println("\nForward iteration:");
+        while (fruitIterator.hasNext()) {
+            String element = fruitIterator.next();
+            System.out.println(element);
+            if (loops++ > 2)
+                break;
+        }
+
     }
 }

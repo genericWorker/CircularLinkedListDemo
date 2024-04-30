@@ -47,12 +47,19 @@ public class CircularLinkedListSchedule{
             }
 
             System.out.println("\nIterator Test");
-            Iterator<Activity> iterator = circularList.iterator();
+            ListIterator<Activity> iterator = circularList.iterator();
             int count = 1;
             while (iterator.hasNext()) {
                 Activity element = iterator.next();
                 System.out.println(element);
-                if (count++ >= 11)
+                if (count++ >= 6)
+                    break;
+            }
+            count = 0;
+            while (iterator.hasPrevious()) {
+                Activity element = iterator.previous();
+                System.out.println(element);
+                if (count++ >= 6)
                     break;
             }
         }

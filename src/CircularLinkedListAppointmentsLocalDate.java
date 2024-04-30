@@ -14,7 +14,6 @@ public class CircularLinkedListAppointmentsLocalDate {
         public Appointment(String apptDescription, LocalDate date) {
             this.apptDescription = apptDescription;
             this.date = date;
-
         }
 
         public DayOfWeek getApptDescription() {
@@ -59,7 +58,7 @@ public class CircularLinkedListAppointmentsLocalDate {
         System.out.println("\nTraversing the circular linked list in a circular manner (several cycles):");
         int numCycles = 0;
         int current = 0;
-        for (Appointment element : circularList) {
+        for (Object element : circularList.toArray()) {
             System.out.println(element);
             current++;
             if (current % circularList.size() == 0) {
