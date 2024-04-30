@@ -131,6 +131,8 @@ public class CircularLinkedList<T> {
         return list.toArray();
     }
 
+
+    //  Example uses
     public static void main(String[] args) {
         CircularLinkedList<String> circularList = new CircularLinkedList<>();
         circularList.add("A");

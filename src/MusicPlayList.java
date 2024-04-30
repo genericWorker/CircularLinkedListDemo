@@ -1,7 +1,7 @@
 import java.util.ListIterator;
 import java.util.Scanner;
 
-public class Music_PlayList {
+public class MusicPlayList {
 
     CircularLinkedList<Song> circularPlaylist = new CircularLinkedList<>();
     ListIterator<Song> iterator = circularPlaylist.iterator();
@@ -79,7 +79,7 @@ public class Music_PlayList {
     }
 
     public static void main(String[] args) {
-        Music_PlayList mp = new Music_PlayList();
+        MusicPlayList mp = new MusicPlayList();
         mp.addSongs();
         mp.testMusicPlayList();
     }
